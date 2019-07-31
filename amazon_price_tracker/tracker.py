@@ -14,14 +14,12 @@ def check_price():
     soup1 = BeautifulSoup(page.content, "html.parser")
     soup2 = BeautifulSoup(soup1.prettify(), "html.parser")
 
-
     title = soup2.find(id="productTitle").get_text()
     price = soup2.find(id="priceblock_ourprice").get_text()
 
     converted_price = float(price[1:5])
 
-
-    if(converted_price > 350):
+    if(converted_price < 350):
         send_mail()
 
     print(converted_price)
